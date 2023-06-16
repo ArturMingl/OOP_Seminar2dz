@@ -3,9 +3,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Market implements I_MarketBehavior, I_QueueBehaviour {
-    List<Buyer> actors = new LinkedList<>();
-    Queue<Buyer> actorsQueue = new ArrayDeque<>();
+public class Market implements I_MarketBehavior, I_QueueBehaviour, Comparable<ArrayDeque> {
+   private List<Buyer> actors = new LinkedList<>();
+   private Queue<Buyer> actorsQueue = new ArrayDeque<>();
 
     @Override
     public void acceptToMarket(Buyer actor) {
@@ -46,5 +46,26 @@ public class Market implements I_MarketBehavior, I_QueueBehaviour {
     public void releaseFromQueue() {
         System.out.println(actorsQueue.peek().getName() + " покинул очередь");
         actorsQueue.poll();
+    }
+
+    public ArrayDeque getQueue(){
+        return (ArrayDeque) actorsQueue;
+    }
+    /**
+     * метод compareTo сравнивает размеры очереди в текущем магазине с любой другой очередью).
+     * Если размер текущей очереди меньше, метод возвращает -1.
+     * Если размер текущей очереди больше, метод возвращает 1.
+     * Если размеры очередей равны, метод возвращает 0
+     */
+    @Override
+    public int compareTo(ArrayDeque otherQueue) {
+        int sizeDiff = actorsQueue.size() - otherQueue.size();
+        if (sizeDiff < 0) {
+            return -1;
+        } else if (sizeDiff > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
