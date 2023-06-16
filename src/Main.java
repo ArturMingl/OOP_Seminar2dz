@@ -62,7 +62,7 @@ public class Main {
         market2.takeInQueue(hm3);
         market2.takeInQueue(hm4);
 
-        // вызывается метод compareTo для сравнения размеров очередей
+        // вызывается метод compareTo (Описан в классе Market) для сравнения размеров очередей
 
         int result = market2.compareTo(market.getQueue());
         if (result < 0) {
