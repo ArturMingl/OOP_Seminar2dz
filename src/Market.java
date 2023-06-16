@@ -23,6 +23,7 @@ public class Market implements I_MarketBehavior, I_QueueBehaviour {
     public void update() {
     }
 
+
     @Override
     public void takeInQueue(Buyer actor) {
         actorsQueue.add(actor);
