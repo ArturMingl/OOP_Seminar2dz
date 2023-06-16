@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Market implements MarketBehavior, QueueBehaviour{
+public class Market implements I_MarketBehavior, I_QueueBehaviour {
     List<Buyer> actors = new LinkedList<>();
     Queue<Buyer> actorsQueue = new ArrayDeque<>();
 
